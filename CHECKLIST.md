@@ -106,19 +106,19 @@ Owner asked for the site to run by double-clicking the HTML — no local server.
 
 ## Phase 2 — Publish on GitHub Pages
 
-- [ ] Ask owner for GitHub username and repo name (suggest `reading-plans`)
-- [ ] Confirm owner is OK with a public repo (free Pages requires public)
-- [ ] Get explicit approval before creating the repo or pushing
-- [ ] Create repo and push `main` (prefer `gh repo create <name> --public --source . --push` if `gh` is installed and signed in)
-- [ ] Enable Pages on `main` branch at root (`/`) — via `gh api` or Settings → Pages
-- [ ] Wait for deploy, then verify live:
-  - [ ] `https://<owner>.github.io/<repo>/` loads the library
-  - [ ] The plan page loads its JSON under the subpath
-  - [ ] Progress survives a reload
-  - [ ] Works on a phone
-- [ ] Add live link to `README.md` and commit
+- [x] Ask owner for GitHub username and repo name (suggest `reading-plans`) — owner chose `bible-reading` under `Jbuck01`
+- [x] Confirm owner is OK with a public repo
+- [x] Get explicit approval before creating the repo or pushing
+- [x] Create repo and push `main` — `gh repo create Jbuck01/bible-reading --public --source . --push`
+- [x] Enable Pages on `main` branch at root (`/`) — `gh api -X POST repos/Jbuck01/bible-reading/pages`
+- [x] Wait for deploy — build status `built` on first poll
+- [x] Verify live: all assets return 200 on `https://jbuck01.github.io/bible-reading/`
+  - [ ] Load the library in a browser and open the plan (manual check — needs you)
+  - [ ] Progress survives a reload (manual check)
+  - [ ] Works on a phone (manual check)
+- [x] Add live link to `README.md` and commit
 
-**Stop. Current goal done.**
+**Phase 2 technically complete** — site is live. Manual browser verification remaining.
 
 ---
 

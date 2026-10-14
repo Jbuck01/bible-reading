@@ -3,6 +3,8 @@
 A tiny static site that holds Bible reading plans. Progress is kept in each
 visitor's browser — no account, no server, no tracking.
 
+**Live:** <https://jbuck01.github.io/bible-reading/>
+
 The first plan is **Prophets to Revelation**: Joel through Revelation in the
 order the books were written (236 chapters, 309 with every optional book).
 
