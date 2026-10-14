@@ -43,14 +43,15 @@
     var btn = document.createElement("button");
     btn.type = "button";
     btn.id = "theme-toggle";
-    btn.className = "theme-toggle";
+    btn.className = "theme-toggle toolbar-btn";
     btn.addEventListener("click", function () {
       var cur = currentPref();
       var next = ORDER[(ORDER.indexOf(cur) + 1) % ORDER.length];
       apply(next);
       render(next, btn);
     });
-    document.body.appendChild(btn);
+    var toolbar = document.getElementById("ui-toolbar");
+    (toolbar || document.body).appendChild(btn);
     render(currentPref(), btn);
   }
 
