@@ -37,6 +37,9 @@ a{color:var(--lapis)}
 
 /* Hero */
 .hero{display:flex;flex-direction:column;gap:18px}
+.backlink{font-family:var(--f-data);font-size:12px;letter-spacing:.06em;margin:0}
+.backlink a{color:var(--muted);text-decoration:none;font-weight:500}
+.backlink a:hover{color:var(--lapis);text-decoration:underline}
 .eyebrow{font-family:var(--f-data);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0}
 h1{font-family:var(--f-display);font-weight:800;font-size:clamp(2.3rem,7vw,3.5rem);line-height:1;letter-spacing:-.01em;margin:0;text-wrap:balance}
 h1 em{font-style:italic;font-weight:500;color:var(--lapis)}

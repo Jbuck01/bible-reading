@@ -113,6 +113,7 @@
     var lede = esc(plan.lede || "");
     root.innerHTML =
       '<header class="hero">' +
+        '<p class="backlink"><a href="index.html">← All plans</a></p>' +
         (eyebrow ? '<p class="eyebrow">' + eyebrow + '</p>' : '') +
         '<h1>' + titleHtml + '</h1>' +
         (lede ? '<p class="lede">' + lede + '</p>' : '') +
