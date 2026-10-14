@@ -231,7 +231,7 @@
     btn.className = "toolbar-btn papa-trigger";
     btn.setAttribute("aria-label", "Open Papa Mode — guided walkthrough");
     btn.title = "Papa Mode — guided walkthrough";
-    btn.textContent = "?";
+    btn.textContent = "Papa Mode";
     btn.addEventListener("click", start);
     return btn;
   }

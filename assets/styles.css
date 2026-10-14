@@ -168,11 +168,15 @@ h1 em{font-style:italic;font-weight:500;color:var(--lapis)}
 .toast button{border:0;background:none;color:inherit;font-weight:700;text-decoration:underline;padding:0}
 
 /* Fixed top-right toolbar (theme toggle + future chrome buttons) */
-.toolbar{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:calc(12px + env(safe-area-inset-right,0px));z-index:20;display:flex;gap:8px}
+.toolbar{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:calc(12px + env(safe-area-inset-right,0px));z-index:20;display:flex;gap:8px;align-items:center}
 .toolbar-btn{width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--ink);font-family:var(--f-data);font-size:17px;line-height:1;display:grid;place-items:center;padding:0;box-shadow:0 1px 3px rgba(0,0,0,.08)}
 .toolbar-btn:hover{border-color:var(--lapis);color:var(--lapis)}
+/* Pill-shaped text button for Papa Mode so the label reads clearly */
+.toolbar-btn.papa-trigger{width:auto;height:40px;padding:0 16px;border-radius:999px;font-family:var(--f-body);font-size:14px;font-weight:700;letter-spacing:.01em;color:var(--lapis);border-color:var(--lapis)}
+.toolbar-btn.papa-trigger:hover{background:var(--lapis-soft);color:var(--lapis)}
 @media (max-width:560px){
   .toolbar{top:calc(8px + env(safe-area-inset-top,0px));right:calc(8px + env(safe-area-inset-right,0px));gap:6px}
+  .toolbar-btn.papa-trigger{padding:0 12px;font-size:13px}
 }
 @media (prefers-reduced-motion:no-preference){
   .brick i{transition:width .35s ease}
