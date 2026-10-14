@@ -105,7 +105,8 @@
     var hashTab = (location.hash === "#books" || location.hash === "#plan") ? location.hash.slice(1) : null;
     var uiState = {
       tab: hashTab || (perPlanUi.tab === "books" ? "books" : "plan"),
-      showAll: false
+      showAll: false,
+      confirmReset: false
     };
 
     var titleHtml = esc(plan.title);
@@ -353,6 +354,26 @@
         }
         html += '</div>';
       }
+
+      // Reset-plan footer. Only visible once the reader has marked at least one chapter.
+      var doneCount = Object.keys(state.done).length;
+      if (doneCount > 0) {
+        if (uiState.confirmReset) {
+          html += '<section class="reset-plan confirming" aria-live="polite">' +
+            '<h3>Reset this plan?</h3>' +
+            '<p>This clears the ' + doneCount + ' chapter' + (doneCount === 1 ? '' : 's') + ' you have marked read. Your pace, Bible version, and optional-book choices stay. Undo is available for 7 seconds after.</p>' +
+            '<div class="row">' +
+              '<button type="button" class="btn danger" id="reset-confirm" data-action="reset-confirm">Yes, reset my progress</button>' +
+              '<button type="button" class="link-btn" data-action="reset-cancel">Cancel</button>' +
+            '</div>' +
+            '</section>';
+        } else {
+          html += '<section class="reset-plan">' +
+            '<button type="button" class="link-btn muted" data-action="reset-ask">Reset my progress</button>' +
+            '</section>';
+        }
+      }
+
       $("books").innerHTML = html;
     }
 
@@ -455,6 +476,21 @@
       } else if (a === "showall") {
         uiState.showAll = !uiState.showAll;
         render();
+      } else if (a === "reset-ask") {
+        uiState.confirmReset = true;
+        render();
+        var cb = $("reset-confirm");
+        if (cb) cb.focus();
+      } else if (a === "reset-cancel") {
+        uiState.confirmReset = false;
+        render();
+      } else if (a === "reset-confirm") {
+        var snap = clone(state.done);
+        var n = Object.keys(snap).length;
+        state.done = {};
+        uiState.confirmReset = false;
+        persist(); render();
+        toast("Reset — " + n + (n === 1 ? " chapter" : " chapters") + " cleared", snap);
       } else if (a === "undo") {
         if (undoSnap) { state.done = undoSnap; undoSnap = null; persist(); render(); }
         $("toast").hidden = true;

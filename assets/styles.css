@@ -152,6 +152,17 @@ h1 em{font-style:italic;font-weight:500;color:var(--lapis)}
 .bact button{border:1px solid var(--line);background:transparent;border-radius:7px;padding:6px 12px;font-size:14px;font-weight:700;color:var(--lapis)}
 .bact button:hover{border-color:var(--lapis)}
 
+/* Reset plan */
+.reset-plan{margin-top:16px;padding:16px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.reset-plan.confirming{padding:16px;margin-top:24px;border:1px solid var(--ochre);border-top:1px solid var(--ochre);border-radius:10px;background:var(--ochre-soft)}
+.reset-plan h3{font-family:var(--f-display);font-weight:700;font-size:1.2rem;margin:0}
+.reset-plan p{margin:0;color:var(--muted);max-width:60ch}
+.reset-plan.confirming p{color:var(--ink)}
+.btn.danger{border-color:var(--ochre);background:var(--ochre);color:var(--on-lapis)}
+.link-btn{border:0;background:transparent;color:var(--lapis);font-weight:700;padding:9px 0;text-align:left;align-self:flex-start;font-size:14px}
+.link-btn.muted{color:var(--muted)}
+.link-btn:hover{text-decoration:underline}
+
 /* Toast */
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:16px;padding:12px 16px;border-radius:10px;background:var(--ink);color:var(--bg);font-size:15px;max-width:calc(100% - 32px);box-shadow:0 6px 24px rgba(0,0,0,.18)}
 .toast button{border:0;background:none;color:inherit;font-weight:700;text-decoration:underline;padding:0}
