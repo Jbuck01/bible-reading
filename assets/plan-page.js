@@ -109,6 +109,13 @@
     };
 
     var titleHtml = esc(plan.title);
+    if (plan.titleAccent && typeof plan.titleAccent === "string") {
+      var accent = esc(plan.titleAccent);
+      // Only wrap the first match. If the accent isn't in the title, leave it alone.
+      if (titleHtml.indexOf(accent) !== -1) {
+        titleHtml = titleHtml.replace(accent, '<em>' + accent + '</em>');
+      }
+    }
     var eyebrow = esc(plan.eyebrow || "");
     var lede = esc(plan.lede || "");
     root.innerHTML =
@@ -237,8 +244,11 @@
       var t = Sch.today(), tIso = Sch.iso(t);
       var html = "";
       if (!sched.remaining.length) {
+        var finishBody = (plan.finishMessage && typeof plan.finishMessage === "string")
+          ? plan.finishMessage
+          : "Every chapter is checked off. Nice work.";
         html += '<div class="today"><p class="when">' + esc(fmtLong.format(t)) + '</p><h2>You finished the plan</h2>' +
-          '<p>Every chapter is checked off. Nice work.</p></div>';
+          '<p>' + esc(finishBody) + '</p></div>';
         $("plan").innerHTML = html;
         return;
       }

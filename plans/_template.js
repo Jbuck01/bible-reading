@@ -17,11 +17,21 @@ window.ReadingPlans.plans["example-plan"] = {
   // Displayed on the plan page and listed in the library.
   "title": "Example Plan",
 
+  // Optional. Exact substring of "title" to render in italic lapis.
+  // Example: title "Prophets to Revelation" + titleAccent "Revelation"
+  // renders as: Prophets to Revelation (last word italicized).
+  // Omit to render the whole title plain.
+  "titleAccent": "Example",
+
   // Small uppercase label above the title. Keep under ~70 chars.
   "eyebrow": "Short category · tagline",
 
   // One or two sentences, shown under the title. Plain text — no HTML.
   "lede": "One or two sentences explaining why this plan is arranged this way.",
+
+  // Optional. Plan-specific text shown when the reader finishes every
+  // chapter. Omit for a generic "Every chapter is checked off" line.
+  "finishMessage": "A short line celebrating what the reader just finished and why it mattered.",
 
   // Short labels under the glazed-brick progress timeline.
   "timeline": {

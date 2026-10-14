@@ -7,8 +7,10 @@ window.ReadingPlans.plans["prophets-to-revelation"] = {
   "id": "prophets-to-revelation",
   "type": "paced",
   "title": "Prophets to Revelation",
+  "titleAccent": "Revelation",
   "eyebrow": "Apocalyptic reading plan · in the order written",
   "lede": "Every book is placed by when it was written, so you meet each image in Joel, Isaiah, Ezekiel, Daniel and Zechariah before Revelation uses it again.",
+  "finishMessage": "Every chapter from Joel to Revelation is checked off. Revelation should read very differently now that you know where its images come from.",
   "timeline": {
     "start": "Joel · c. 835 BC",
     "end": "Revelation · c. AD 95"
