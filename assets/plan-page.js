@@ -161,6 +161,27 @@
     }
     var hasAnyKey = plan.books.some(function (b) { return b.key && b.key.length > 0; });
 
+    function computeStreak() {
+      var dates = new Set();
+      for (var k in state.done) if (state.done[k]) dates.add(state.done[k]);
+      if (dates.size === 0) return 0;
+      var t = Sch.today();
+      var todayIso = Sch.iso(t);
+      var yesterdayIso = Sch.iso(Sch.addDays(t, -1));
+      // One-day grace: if nothing today but something yesterday, start the streak at yesterday.
+      var start;
+      if (dates.has(todayIso)) start = t;
+      else if (dates.has(yesterdayIso)) start = Sch.addDays(t, -1);
+      else return 0;
+      var streak = 0;
+      var d = start;
+      while (dates.has(Sch.iso(d))) {
+        streak++;
+        d = Sch.addDays(d, -1);
+      }
+      return streak;
+    }
+
     function schedule() {
       var remaining = chaptersInPlan().filter(function (c) { return !state.done[c.key]; });
       return Sch.buildSchedule({
@@ -210,6 +231,10 @@
         '<li><span class="k">Finish at this pace</span><span class="v">' + esc(finish) + '</span></li>';
       if (hasAnyKey && plan.keyStatLabel) {
         statsHtml += '<li><span class="k">' + esc(plan.keyStatLabel) + '</span><span class="v">' + keyLeft + ' <small>chapters</small></span></li>';
+      }
+      var streak = computeStreak();
+      if (streak > 0) {
+        statsHtml += '<li><span class="k">Streak</span><span class="v">' + streak + ' <small>day' + (streak === 1 ? '' : 's') + '</small></span></li>';
       }
       $("stats").innerHTML = statsHtml;
     }
