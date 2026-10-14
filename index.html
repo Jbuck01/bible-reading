@@ -11,6 +11,17 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jbuck01.github.io/bible-reading/">
 <meta name="twitter:card" content="summary">
+<script>
+// Apply saved theme before CSS to avoid a flash. The only exception to
+// "only storage.js touches localStorage" — kept inline so it runs pre-paint.
+try {
+  var ui = localStorage.getItem("readingPlans:v1:ui");
+  var pref = ui ? (JSON.parse(ui) || {}).theme : null;
+  if (pref === "light" || pref === "dark") {
+    document.documentElement.setAttribute("data-theme", pref);
+  }
+} catch (e) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,500;0,700;0,800;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -29,5 +40,6 @@
 <script src="assets/storage.js"></script>
 <script src="plans/index.js"></script>
 <script src="assets/library.js"></script>
+<script src="assets/theme.js"></script>
 </body>
 </html>
