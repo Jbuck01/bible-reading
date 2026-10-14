@@ -1,0 +1,6 @@
+# Local-only working docs — kept out of the published repo.
+improvements.md
+
+# OS cruft
+Thumbs.db
+.DS_Store
