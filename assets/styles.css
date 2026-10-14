@@ -183,13 +183,16 @@ h1 em{font-style:italic;font-weight:500;color:var(--lapis)}
   .chip,.chk{transition:background-color .15s,border-color .15s}
 }
 
-/* Papa Mode */
-.papa-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:50}
+/* Papa Mode
+   The overlay is a transparent click-catcher. The visual dim comes from a
+   huge box-shadow painted *outward* from the highlighted element, so the
+   element itself keeps its own background/text colors (even if it has
+   none of its own) instead of being tinted by a full-page dim layer. */
+.papa-overlay{position:fixed;inset:0;background:transparent;z-index:50}
+.papa-highlight{position:relative;z-index:55;outline:3px solid var(--lapis);outline-offset:4px;border-radius:6px;pointer-events:none;box-shadow:0 0 0 9999px rgba(0,0,0,.55)}
 @media (prefers-reduced-motion:no-preference){
-  .papa-overlay{animation:papa-fade .18s ease-out}
+  .papa-highlight{transition:box-shadow .15s ease-out}
 }
-@keyframes papa-fade{from{opacity:0}to{opacity:1}}
-.papa-highlight{position:relative;z-index:55;outline:3px solid var(--lapis);outline-offset:4px;border-radius:6px;pointer-events:none}
 .papa-tooltip{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:70;width:calc(100% - 32px);max-width:440px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:18px 20px;box-shadow:0 12px 36px rgba(0,0,0,.25);display:flex;flex-direction:column;gap:10px}
 .papa-step{font-family:var(--f-data);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0}
 .papa-title{font-family:var(--f-display);font-weight:700;font-size:1.3rem;line-height:1.2;margin:0}
